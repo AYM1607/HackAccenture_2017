@@ -13,10 +13,6 @@ import { Actions } from 'react-native-router-flux';
 
 class Home extends Component {
 
-	onPressLogin() {
-		Actions.login();
-	}
-
 	render () {
 		return (
 			<Container>
@@ -31,11 +27,16 @@ class Home extends Component {
 						block 
 						success 
 						style={styles.buttons}
-						onPress={this.onPressLogin}
+						onPress={Actions.login}
 					>
 						<Text style={styles.buttonText}>Login</Text>
 					</Button>
-					<Button block success style={styles.buttons}>
+					<Button
+						block
+						success 
+						style={styles.buttons}
+						onPress={Actions.signup}
+					>
 						<Text style={styles.buttonText}>SignUp</Text>
 					</Button>
 				</Content>

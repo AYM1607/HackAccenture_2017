@@ -30,9 +30,7 @@ class SignUpScreen extends Component {
           <Body>
             <Title>Sign up</Title>
           </Body>
-          <Right>
-            <Icon name='bus' />
-          </Right>
+          <Right />
         </Header>
 
         <Content>
