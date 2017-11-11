@@ -78,7 +78,7 @@ import {Card,
                 </CardItem>
                 <CardItem>
                 <Left>
-                  <Button bordered success onPress={() => this._handlePress(weeklyOffer.cost)}><Text>{weeklyOffer.cost} GreenWards</Text></Button>
+                  <Button bordered success onPress={() => this._handlePress(weeklyOffer.cost)}><Text>{weeklyOffer.cost} GreenPoints</Text></Button>
                 </Left>
                 </CardItem>
               </Card>
@@ -86,7 +86,7 @@ import {Card,
           </List>
           <View  style={styles.button}>
             <Button block success >
-               <Text style={styles.texto}>Normal Offers</Text>
+               <Text>Normal Offers</Text>
             </Button>
           </View>
           <List dataArray={regularOffers}
@@ -105,7 +105,7 @@ import {Card,
                  </CardItem>
                  <CardItem>
                  <Left>
-                    <Button bordered success onPress={() => this._handlePress(regularOffer.cost)}><Text>{regularOffer.cost} GreenWards</Text></Button>
+                    <Button bordered success onPress={() => this._handlePress(regularOffer.cost)}><Text>{regularOffer.cost} GreenPoints</Text></Button>
                  </Left>
                  </CardItem>
                </Card>

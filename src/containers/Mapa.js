@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import { Container, 
+import { Container,
          Icon,
          Right,
          Left,
-         Body, 
+         Body,
          Button,
          Header,
-         Title, 
+         Title,
          Footer,
          FooterTab,
          Content,
@@ -30,8 +30,8 @@ const styles = {
         color: 'rgb(0,122,255)',
   },
   imageStyle: {
-    width: '60%', 
-    height: 100, 
+    width: '60%',
+    height: 100,
     alignSelf: 'center',
   }
 };
@@ -73,7 +73,7 @@ class Mapa extends Component {
 
                   {this.props.events.map(marker =>(
                     <MapView.Marker
-                      key={marker.key} 
+                      key={marker.key}
                       coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
                     >
                       <CustomMarker
@@ -92,7 +92,7 @@ class Mapa extends Component {
                           </Text>
                           <Image source={require('../img/rio.jpg')} style={styles.imageStyle} />
                       </MapView.Callout>
-                    </MapView.Marker> 
+                    </MapView.Marker>
                   ))}
 
 

@@ -50,7 +50,7 @@ import { connect } from 'react-redux';
     }
 
   render() {
-    var items= [{icon:"refresh", name: "100 latas recicladas"},{icon:"cart", name: "10 articulos organicos"}, {icon:"navigate", name: "Paticipar en 5 eventos"},{icon:"navigate", name: "Paticipar en 5 eventos"}];
+    var items= [{icon:"refresh", name: "100 latas recicladas"},{icon:"cart", name: "10 articulos organicos"}, {icon:"navigate", name: "Paticipar en 5 eventos"},{icon:"navigate", name: "Paticipar en 10 eventos"}];
     return (
       <Container >
 
@@ -67,7 +67,7 @@ import { connect } from 'react-redux';
           <Thumbnail large source={require('../img/profile-icon.jpg')}/>
           </Col>
           <Col size={75} style={styles.points}>
-           <H1 style={styles.titles}> GreenWards:{"\n"}
+           <H1 style={styles.titles}> GreenPoints:{"\n"}
               {this.props.user.points}</H1>
           </Col>
         </Row>
