@@ -9,8 +9,14 @@ import {
 	Body,
 	Title,
 } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 class Home extends Component {
+
+	onPressLogin() {
+		Actions.login();
+	}
+
 	render () {
 		return (
 			<Container>
@@ -21,7 +27,12 @@ class Home extends Component {
 				</Header>
 				<Content contentContainerStyle={styles.container}>
 					<Image source={require('../img/logo.png')} style={styles.imageStyle} />
-					<Button block success style={styles.buttons}>
+					<Button
+						block 
+						success 
+						style={styles.buttons}
+						onPress={this.onPressLogin}
+					>
 						<Text style={styles.buttonText}>Login</Text>
 					</Button>
 					<Button block success style={styles.buttons}>

@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Home from './src/containers/Home'
+import LoginScreen from './src/containers/LoginScreen';
 
 
 export default class App extends Component<{}> {
@@ -24,6 +25,11 @@ export default class App extends Component<{}> {
               key='home'
               component={Home}
               initial
+            />
+
+            <Scene 
+              key="login"
+              component={LoginScreen}
             />
           </Scene>
         </Router>
