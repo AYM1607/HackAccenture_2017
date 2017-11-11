@@ -4,15 +4,40 @@ import {Card,
   Header,
   CardItem,
   Body,
-  Thumbnail, Button,
+  Thumbnail,
+  Button,
   Left,
+  Right,
   List,
   Container,
-  Text,
   View,
-  H3} from 'native-base';
+  Footer,
+  FooterTab,
+  H3,
+  Text
+  } from 'native-base';
   import {Alert} from 'react-native';
+  import { Actions } from 'react-native-router-flux';
+
  class Rewards extends Component{
+    onPressB1() {
+        Actions.replace('profile');
+    }
+
+    onPressB2() {
+
+    }
+
+    onPressB3() {
+        Actions.replace('mapa');
+
+    }
+
+    onPressB4() {
+        Actions.replace('scanner');
+
+    }
+
    _handlePress(puntos){
      fetch("https://us-central1-greenwards-9e80b.cloudfunctions.net/newUser?id=0001&points="+puntos).then();
      Alert.alert("Nada","Se restaran: "+puntos+" GreenWards de tu cuenta y se activara la recompensa seleccionada");
@@ -26,7 +51,11 @@ import {Card,
      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed..."}]
      return (
        <Container>
-       <Header />
+       <Header>
+        <Left />
+        <Body><Text>Rewards</Text></Body>
+        <Right />
+       </Header>
        <Content contentContainerStyle={styles.contenido}>
        <View  style={styles.button}>
          <Button block success>
@@ -83,6 +112,36 @@ import {Card,
              }>
          </List>
        </Content>
+
+                       <Footer>
+                    <FooterTab>
+                        <Button
+                        onPress={this.onPressB1.bind(this)}
+                        >
+                            <Text style={styles.buttonText}>Profile</Text>
+                        </Button>
+
+                        <Button
+                        active
+                        onPress={this.onPressB2.bind(this)}
+                        >
+                            <Text style={styles.buttonText}>Rewards</Text>
+                        </Button>
+
+                        <Button
+                        onPress={this.onPressB3.bind(this)}
+                        >
+                            <Text style={styles.buttonText}>Events</Text>
+                        </Button>
+
+                        <Button
+                        onPress={this.onPressB3.bind(this)}
+                        >
+                            <Text style={styles.buttonText}>Scanner</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
+
        </Container>
 
      );
@@ -102,5 +161,8 @@ import {Card,
      width:150,
      height:100,
    },
+   buttonText: {
+        color: 'rgb(0,122,255)',
+  },
  };
  export default Rewards;

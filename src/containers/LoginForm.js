@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import firebase from 'firebase';
 import { Container, 
          Form, 
          Item, 
@@ -10,6 +9,7 @@ import { Container,
          Spinner, 
         } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import firebase from 'firebase';
 
 class LoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false }
@@ -33,7 +33,7 @@ class LoginForm extends Component {
       error: '',
       loading: false,
     });
-    Actions.mapa();
+    Actions.profile();
   }
 
   onLoginFailure() {
