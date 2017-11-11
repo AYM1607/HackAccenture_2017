@@ -37,7 +37,7 @@ class QRScanner extends Component {
     }
 
     onPressB2() {
-        this.setState({ button1: false, button2: true, button3: false });
+        Actions.replace('rewards');
     }
 
     onPressB3() {
@@ -46,11 +46,12 @@ class QRScanner extends Component {
     }
 
     onReadCode(data) {
-    	Alert.alert(
-    					'Congratulations', 
-    					String(data.data) + ' GreenWard points added!', 
-    					[ {text: 'Thank you!', onPress: () => this.scanner.reactivate() } ] 
-    				);
+      fetch('https://us-central1-greenwards-9e80b.cloudfunctions.net/updatePoints?id=0001&points='+String(data.data));
+              Alert.alert(
+              'Congratulations', 
+              String(data.data) + ' GreenWard points added!', 
+              [ {text: 'Thank you!', onPress: () => this.scanner.reactivate() } ] 
+            );
     }
 
 

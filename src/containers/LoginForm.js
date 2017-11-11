@@ -33,7 +33,7 @@ class LoginForm extends Component {
       error: '',
       loading: false,
     });
-    Actions.pop();
+    Actions.profile();
   }
 
   onLoginFailure() {

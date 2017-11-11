@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Container, 
          Icon,
          Right,
@@ -14,6 +14,9 @@ import { Container,
         } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import MapView from 'react-native-maps';
+import { connect } from 'react-redux';
+import CustomMarker from '../components/CustomMarker';
+import CustomCallout from '../components/CustomCallout';
 
 const styles = {
   map: {
@@ -26,6 +29,11 @@ const styles = {
   buttonText: {
         color: 'rgb(0,122,255)',
   },
+  imageStyle: {
+    width: '60%', 
+    height: 100, 
+    alignSelf: 'center',
+  }
 };
 
 class Mapa extends Component {
@@ -37,7 +45,7 @@ class Mapa extends Component {
     }
 
     onPressB2() {
-        this.setState({ button1: false, button2: true, button3: false });
+        Actions.replace('rewards');
     }
 
     onPressB3() {
@@ -57,12 +65,38 @@ class Mapa extends Component {
                     style={styles.map}
                     initialRegion={{
                     latitude: 25.651526,
-                    longitude: -100.292153,
+                    longitude: -100.377454,
                     latitudeDelta: 0.0422,
                     longitudeDelta: 0.0421,
                     }}
-                />
+                >
 
+                  {this.props.events.map(marker =>(
+                    <MapView.Marker
+                      key={marker.key} 
+                      coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+                    >
+                      <CustomMarker
+                        fontSize={12}
+                        value={marker.title}
+                        onPress={() => {
+                          this.showCallout();
+                        }}
+                      />
+                      <MapView.Callout
+                        style={{ flex: -1, position: 'absolute', width:300}}
+                      >
+                          <Title>{marker.titleCallout}</Title>
+                          <Text style={{ alignSelf: 'center', justifyContent: 'center'}}>
+                          {marker.text}
+                          </Text>
+                          <Image source={require('../img/rio.jpg')} style={styles.imageStyle} />
+                      </MapView.Callout>
+                    </MapView.Marker> 
+                  ))}
+
+
+                </MapView>
 
                 <Header>
                   <Left />
@@ -109,4 +143,21 @@ class Mapa extends Component {
 	}
 }
 
-export default Mapa;
+const mapStateToProps = (state) => {
+  return {
+    events: state.Events,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createEvent: (event) => {
+      dispatch({
+        type: "CREATE_EVENT",
+        payload: event,
+      });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Mapa)

@@ -20,14 +20,25 @@ import {  Container,
           FooterTab,
           Button 
         } from 'native-base';
-import { Actions } from 'react-native-router-flux'
-//import { } from 'react-native-easy-grid';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
  class Profile extends Component {
+
+    componentWillMount() {
+      var starCountRef = firebase.database().ref('/users/0001/points');
+      starCountRef.once('value').then( (snapshot) => {
+      this.props.setPoints(Number(snapshot.val()));
+    });
+
+    }
 
     onPressB1() {
     }
 
     onPressB2() {
+      Actions.replace('rewards');
     }
 
     onPressB3() {
@@ -56,21 +67,21 @@ import { Actions } from 'react-native-router-flux'
           <Thumbnail large source={require('../img/profile-icon.jpg')}/>
           </Col>
           <Col size={75} style={styles.points}>
-           <H1 style={styles.titles}>GreenWards:{"\n"}
-              20,000</H1>
+           <H1 style={styles.titles}> GreenWards:{"\n"}
+              {this.props.user.points}</H1>
           </Col>
         </Row>
         <H2 style={styles.subtitles}> Mi informacion </H2>
         <Row size={30}>
           <List style={styles.row}>
                 <ListItem>
-                  <Text>Name:</Text>
+                  <Text>Name: Mariano Uvalle</Text>
                 </ListItem>
                 <ListItem>
-                  <Text>Phone:</Text>
+                  <Text>Phone: 834-000-0000</Text>
                 </ListItem>
                 <ListItem>
-                  <Text>Email:</Text>
+                  <Text>Email: mariano@aym.agency</Text>
                 </ListItem>
           </List>
         </Row>
@@ -181,4 +192,22 @@ const styles = {
     marginBottom: 30,
   },
 };
-export default Profile;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.User,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setPoints: (data) => {
+      dispatch({
+        type: "UPDATE_POINTS",
+        payload: data
+      });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
