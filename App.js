@@ -15,7 +15,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import Home from './src/containers/Home'
 import LoginScreen from './src/containers/LoginScreen';
 import Profile from './src/containers/Profile';
-
+import Rewards from './src/containers/Rewards';
 export default class App extends Component<{}> {
   render() {
     return (
@@ -28,11 +28,16 @@ export default class App extends Component<{}> {
             />
             <Scene key="profile"
             component={Profile}
-            initial
+
             />
             <Scene
               key="login"
               component={LoginScreen}
+            />
+            <Scene
+              key="rewards"
+              component={Rewards}
+              initial
             />
           </Scene>
         </Router>
