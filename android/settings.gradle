@@ -1,0 +1,3 @@
+rootProject.name = 'HackAccenture_2017'
+
+include ':app'
