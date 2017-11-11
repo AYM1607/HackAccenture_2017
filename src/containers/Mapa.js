@@ -33,7 +33,7 @@ class Mapa extends Component {
     state = { button1: true, button2: false, button3: false };
 
     onPressB1() {
-        this.setState({ button1: true, button2: false, button3: false });
+        Actions.replace('profile');
     }
 
     onPressB2() {
@@ -52,6 +52,7 @@ class Mapa extends Component {
         const { buttonText } = styles;
 		return (
             <Container>
+
                 <MapView
                     style={styles.map}
                     initialRegion={{

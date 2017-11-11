@@ -33,7 +33,7 @@ class QRScanner extends Component {
     state = { button1: true, button2: false, button3: false };
 
     onPressB1() {
-        this.setState({ button1: true, button2: false, button3: false });
+        Actions.replace('profile');
     }
 
     onPressB2() {

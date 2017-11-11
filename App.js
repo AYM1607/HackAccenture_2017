@@ -18,6 +18,7 @@ import LoginScreen from './src/containers/LoginScreen';
 import SignUpScreen from './src/containers/SignUpScreen';
 import Mapa from './src/containers/Mapa';
 import QRScanner from './src/containers/QRScanner';
+import Profile from './src/containers/Profile';
 
 
 export default class App extends Component<{}> {
@@ -55,6 +56,11 @@ export default class App extends Component<{}> {
             <Scene
               key="mapa"
               component={Mapa}
+            />
+
+            <Scene
+              key="profile"
+              component={Profile}
             />
 
             <Scene
